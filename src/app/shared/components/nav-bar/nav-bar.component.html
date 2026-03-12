@@ -1,0 +1,48 @@
+<nav class="w-full z-20 top-0 start-0">
+  <div
+    class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4"
+  >
+  <!-- Button Logo -->
+    <a
+      class="flex items-center space-x-3"
+      [routerLink]="[clientRoutes.DASHBOARD]"
+    >
+      <span class="self-center text-xl font-semibold whitespace-nowrap"
+        >Prueba Tecnica</span
+      >
+    </a>
+    <!-- Button Menu -->
+    <button
+      type="button"
+      (click)="toggleMenu()"
+      class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm rounded-base md:hidden hover:bg-gray-100 hover:border hover:border-gray-200 dark:hover:bg-gray-500"
+      [ngClass]="
+        menuOpen()
+          ? [
+              'bg-gray-100',
+              'border',
+              'border-gray-200',
+              'dark:bg-gray-700',
+              'dark:border-gray-500',
+            ]
+          : []">
+      <span class="sr-only">Open menu</span>
+      <fa-icon [icon]="faGripLines" size="xl"></fa-icon>
+    </button>
+    <!-- Menu Options -->
+    <div [class.hidden]="!menuOpen()" class="w-full md:block md:w-auto">
+      <ul
+        class="font-medium flex flex-col p-4 md:p-0 mt-4 rounded-base md:flex-row md:space-x-8 md:mt-0"
+      >
+        <li>
+          <a
+            (click)="toggleDarkMode()"
+            class="block py-2 px-3 rounded md:hover:bg-transparent md:hover:text-fg-brand md:p-0 hover:bg-gray-100 hover:underline dark:hover:bg-gray-700"
+          >
+            Dark Mode
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
