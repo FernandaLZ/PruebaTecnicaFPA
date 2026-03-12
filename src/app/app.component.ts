@@ -8,5 +8,13 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'prueba-tecnica-fpalpha';
+  toggleDarkMode() {
+    console.log('Toggling dark mode');
+    const html = document.documentElement;
+
+    html.classList.toggle('dark');
+
+    console.log(html.classList);
+  }
+
 }
