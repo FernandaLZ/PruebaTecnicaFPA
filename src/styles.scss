@@ -1,1 +1,21 @@
+@use 'tailwindcss' as *;
+@custom-variant dark (&:where(.dark, .dark *));
+
 /* You can add global styles to this file, and also import other style files */
+:root {
+  --color-white-secondary: oklch(98.5% 0.002 247.839);
+  --color-black: oklch(55.1% 0.027 264.364);
+
+}
+
+:where(.dark, .dark *) {
+  --color-white-secondary: oklch(21% 0.034 264.665);
+  --color-black: oklch(70.7% 0.022 261.325);
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-white-secondary);
+  color: var(--color-black);
+}
+
