@@ -33,78 +33,23 @@
           <button
             type="button"
             (click)="addClient()"
-            class="flex items-center justify-center dark:text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800"
+            class="bg-gray-50 hover:bg-gray-300 shadow-xs font-medium rounded-base text-sm px-4 py-2 focus:outline-none dark:bg-gray-700 dark:text-white dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white"
           >
             New Client
           </button>
         </div>
       </div>
       <div class="overflow-x-auto">
-        <table
-          class="w-full table-fixed text-sm text-left text-gray-500 dark:text-gray-400"
-        >
-          <thead
-            class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
-          >
-            <tr>
-              <th scope="col" class="px-4 py-3">Name</th>
-              <th scope="col" class="px-4 py-3">Email</th>
-              <th scope="col" class="px-4 py-3">Phone</th>
-              <th scope="col" class="px-4 py-3">Creation Date</th>
-            </tr>
-          </thead>
-          <tbody>
-            @if (clientResource.isLoading()) {
-              <!-- Skeleton rows -->
-              @for (i of [1, 2, 3, 4, 5]; track i) {
-                <tr class="border-b dark:border-gray-700 animate-pulse">
-                  <td class="px-4 py-3">
-                    <div
-                      class="h-4 bg-gray-200 dark:bg-gray-700 rounded w-32"
-                    ></div>
-                  </td>
-                  <td class="px-4 py-3">
-                    <div
-                      class="h-4 bg-gray-200 dark:bg-gray-700 rounded w-48"
-                    ></div>
-                  </td>
-                  <td class="px-4 py-3">
-                    <div
-                      class="h-4 bg-gray-200 dark:bg-gray-700 rounded w-24"
-                    ></div>
-                  </td>
-                  <td class="px-4 py-3">
-                    <div
-                      class="h-4 bg-gray-200 dark:bg-gray-700 rounded w-28"
-                    ></div>
-                  </td>
-                </tr>
-              }
-            } @else {
-              @for (client of filteredClients(); track client.id) {
-                <tr class="border-b dark:border-gray-700">
-                  <th
-                    scope="row"
-                    class="px-4 py-3 font-medium text-gray-900 break-words whitespace-nowrap dark:text-white"
-                  >
-                    {{ client.name }}
-                  </th>
-                  <td class="px-4 py-3 break-words">{{ client.email }}</td>
-                  <td class="px-4 py-3 break-words">
-                    {{ client?.phone?.split("x")?.[0] ?? "—" }}
-                  </td>
-                  <td class="px-4 py-3 break-words">
-                    {{ client.creationDate | creationDateClient }}
-                  </td>
-                </tr>
-              }
-            }
-          </tbody>
-        </table>
+        @if (clientResource.isLoading()) {
+          <table-skeleton-table></table-skeleton-table>
+        }
+        @if (clientResource.value(); as clients) {
+          <client-table [filteredClients]="filteredClients()"></client-table>
+        }
       </div>
       <div class="flex justify-end">
         <client-pagination
-          [pages]="clientService.pages()"
+          [pages]="pages()"
           [currentPage]="currentPage()"
         ></client-pagination>
       </div>
