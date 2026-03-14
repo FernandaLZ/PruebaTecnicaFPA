@@ -1,47 +1,59 @@
 # PruebaTecnicaFpalpha
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.22.
+Este proyecto fue generado usando **Angular CLI versión 19.2.22**. Se requiere Angular 19 para ejecutar y compilar correctamente la aplicación.
 
-## Development server
+---
 
-To start a local development server, run:
+## Servidor de desarrollo
 
+Para iniciar un servidor local:
 ```bash
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Luego abre tu navegador en `http://localhost:4200/`. La aplicación se recargará automáticamente cada vez que modifiques los archivos fuente.
 
-## ¿Porqué elegí esta estructua?
- -clients
-  -components
-  -interfaces
-  -mapper
-  -pages
-  -pipes
-  -services
--shared
-  -components
-  -interfaces
-  -routes
+---
 
-Elegí organizar los archivos así para que todo lo relacionado con clientes esté junto en un solo lugar, lo que hace que sea más fácil entender y trabajar con ellos. Por ejemplo, los componentes, servicios y datos están todos agrupados, y lo que se comparte con otros módulos se pone en otra carpeta.
+## Estructura de carpetas
 
-De esta manera, el módulo de clientes funciona de forma independiente, y si más adelante agregamos otros módulos, podemos seguir la misma forma de organizar todo, manteniendo la aplicación ordenada y fácil de mantener.
+Organización del proyecto para que todo lo relacionado con clientes esté en un solo lugar, facilitando comprensión y mantenimiento:
+```
+clients
+├─ components
+├─ interfaces
+├─ mapper
+├─ pages
+├─ pipes
+└─ services
 
-## ¿Porqué elegí este patron?
+shared
+├─ components
+├─ interfaces
+└─ router
 
-Elegí un patrón donde toda la lógica de los clientes se maneja en un solo lugar y los componentes solo se ocupan de mostrar los datos y reaccionar a los cambios del usuario. Esto permite mantener el código más organizado, predecible y fácil de actualizar.
+Con esta estructura, el módulo de clientes funciona de forma independiente. Otros módulos pueden agregarse siguiendo la misma organización, manteniendo la aplicación ordenada y fácil de mantener.
 
-## ¿Porqué elegí estas librerias?
+---
 
--Tailwind
-Elegí Tailwind porque me permite hacer los estilos de manera mucho más rápida y consistente. Además, hay recursos como Flowbite que dan ejemplos listos con esta librería, lo que facilita implementar componentes visuales solo cambiando los datos que necesito.
+## Patrón de diseño elegido
 
--Angular Material
-Usé Angular Material principalmente para los diálogos, porque me permite crear modales funcionales y accesibles de manera sencilla, sin tener que construir toda la lógica y el estilo desde cero. Esto hace que el desarrollo sea más rápido y la experiencia del usuario más consistente.
+Toda la lógica de clientes se maneja en un solo lugar, mientras que los componentes se enfocan en mostrar los datos y reaccionar a los cambios del usuario. Esto permite que el código sea más organizado, predecible y fácil de actualizar.
 
-## ¿IA?
-Me orienté para guiarme en la mejor implementación del dark mode, ajustando los colores para que combinen con la tabla de Flowbite. También trabajé en la lógica de la pipe de tiempo, donde ajusté la función pluralize para mostrar los labels correctamente y corregí un error relacionado con el manejo de fechas (Date).
+---
 
-Además, utilicé copilot para el autocompletado para agilizar el desarrollo y asegurar que todas las dependencias estuvieran correctamente importadas.
+## Librerías utilizadas
+
+- **Tailwind CSS** — Permite crear estilos de manera rápida y consistente. Además, recursos como Flowbite proveen ejemplos de componentes listos para usar, facilitando la implementación con solo cambiar los datos.
+
+- **Angular Material** — Se utilizó principalmente para diálogos (modales), ya que permite crear componentes funcionales y accesibles de manera sencilla, sin desarrollar toda la lógica y estilo desde cero. Esto agiliza el desarrollo y asegura una experiencia de usuario consistente.
+
+---
+
+## Uso de IA
+
+- IA ayudó en la implementación del **dark mode**, ajustando colores para combinar con la tabla de Flowbite.
+- Se usó IA para mejorar la **pipe de tiempo**, ajustando la función `pluralize` y corrigiendo errores en el manejo de fechas (`Date`).
+- **Copilot** se utilizó para autocompletado y asegurar que todas las dependencias estuvieran correctamente importadas.
+- Para la **paginación filtrada**, inicialmente se implementó manualmente, pero se usó IA para resolver la paginación con filtrado, ajustando las funciones que no se utilizaban.
+
