@@ -49,15 +49,15 @@ export default class ClientsDashboardPageComponent {
   searchControl = signal('');
 
   filteredClients = computed(() =>
-  this.clientService.getFilteredClients(
-    this.currentPage(),
-    this.searchControl()
-  )
-);
+    this.clientService.getFilteredClients(
+      this.currentPage(),
+      this.searchControl(),
+    ),
+  );
 
-pages = computed(() =>
-  this.clientService.getTotalPages(this.searchControl())
-);
+  pages = computed(() =>
+    this.clientService.getTotalPages(this.searchControl()),
+  );
 
   //Petition
   clientResource = rxResource({
