@@ -135,6 +135,7 @@ export class ClientService {
       .delete<{}>(`${environment.jsonPlaceHolderUrl}/posts/${noteId}`)
       .pipe(
         tap(() => {
+          console.log(`Note with id ${noteId} deleted`);
           this.noteByClientCache.update((cache) => ({
             ...cache,
             [clientId]: cache[clientId]?.filter((n) => n.id !== noteId) ?? [],
@@ -145,15 +146,20 @@ export class ClientService {
 
   //HTTP request to add note
   addNoteByClientId(note: string, clientId: number): Observable<Note> {
-    const newNote: Omit<Note, 'id'> = {
+    const notes = this.noteByClientCache()[clientId]?.length;
+    const newNote: Note = {
+      id: notes ? notes + 1 : 1,
       userId: clientId,
       title: note,
       body: '',
     };
+
     return this.http
       .post<Note>(`${environment.jsonPlaceHolderUrl}/posts`, newNote)
       .pipe(
         tap((createdNote) => {
+          const noteId = notes ? notes + 1 : 1;
+          createdNote.id = noteId;
           this.noteByClientCache.update((cache) => ({
             ...cache,
             [clientId]: [...(cache[clientId] ?? []), createdNote],
