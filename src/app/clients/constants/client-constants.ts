@@ -1,3 +1,3 @@
-export class ClientConstants{
+export class ClientConstants {
   static readonly clientNameMinLength = 3;
 }

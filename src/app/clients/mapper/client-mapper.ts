@@ -4,19 +4,16 @@ import {
 } from '../interfaces/client-interfaces';
 
 export class ClientMapper {
-
   static mapClientsResponseToDashboard(
-    items: ClientResponse[]
+    items: ClientResponse[],
   ): ClientDashboardPageData[] {
-
-    return items.map(item => ({
+    return items.map((item) => ({
       name: item.name,
       email: item.email,
       phone: item.phone,
       id: item.id,
       creationDate: ClientMapper.getRandomDateLastYear(),
     }));
-
   }
 
   private static getRandomDateLastYear(): string {
@@ -30,5 +27,4 @@ export class ClientMapper {
 
     return new Date(randomTime).toISOString();
   }
-
 }

@@ -1,0 +1,44 @@
+<div class="flex flex-col justify-center w-full">
+    <h1 class="text-2xl font-semibold text-center">{{ client().name }}</h1>
+    <div
+      class="grid grid-cols-1 gap-2 w-2/3 mx-auto mt-4"
+      [ngClass]="{ 'lg:grid-cols-2': client().company && client().address }"
+    >
+      <div class="flex flex-col rounded border border-gray-400 px-6 py-3">
+        <span class="font-bold text-md text-center">Client Info</span>
+        <span class="font-bold">Email:</span> <span>{{ client().email }}</span>
+        @if (client().phone) {
+          <span class="font-bold">Phone:</span> <span>{{ client().phone }}</span>
+        }
+
+        @if (client().website && client().username) {
+          <span class="font-bold">Website:</span>
+          <span>{{ client().website }}</span>
+          <span class="font-bold">Username:</span>
+          <span>{{ client().username }}</span>
+        }
+        <span class="font-bold">Creation Date:</span>
+        <span>{{ client().creationDate | date: "medium" }}</span>
+      </div>
+      @if (client().company || client().address) {
+        <div class="flex flex-col rounded border border-gray-400 px-6 py-3">
+          <span class="font-bold text-md text-center">Client Company</span>
+          <span class="font-bold">Name:</span>
+          <span>{{ client().company?.name }}</span>
+          <span class="font-bold">Catch Phrase:</span>
+          <span>{{ client().company?.catchPhrase }}</span>
+          <span class="font-bold">Bs:</span>
+          <span>{{ client().company?.bs }}</span>
+          <span class="font-bold text-md text-center mt-3">Client Adress</span>
+          <span class="font-bold">Street:</span>
+          <span>{{ client().address?.street }}</span>
+          <span class="font-bold">Suite:</span>
+          <span>{{ client().address?.suite }}</span>
+          <span class="font-bold">City:</span>
+          <span>{{ client().address?.city }}</span>
+          <span class="font-bold">Zipcode:</span>
+          <span>{{ client().address?.zipcode }}</span>
+        </div>
+      }
+    </div>
+  </div>

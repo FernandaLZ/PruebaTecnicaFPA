@@ -1,1 +1,62 @@
-<p>client-details-page works!</p>
+@if (clientResource.value(); as client) {
+  <client-card-info-client [client]="client"></client-card-info-client>
+}
+@if (clientResource.error()) {
+  <div class="flex flex-col justify-center items-center w-full">
+    <h1 class="text-2xl font-semibold text-center text-red-500">
+      Error loading client details
+    </h1>
+    <p class="text-center text-gray-500 mt-2">Please try again later.</p>
+  </div>
+}
+@if (noteResource.value(); as notes) {
+  <div class="flex flex-col justify-center w-full">
+    <div class="grid grid-cols-1 gap-2 w-2/3 mx-auto mt-4">
+      <div class="flex flex-col rounded border border-gray-400 px-6 py-3">
+        <span class="font-bold text-md text-center">Notes</span>
+        <div class="mb-5 flex items-start justify-start gap-2 mt-3">
+          <div class="flex flex-col grow">
+            <input
+              [formControl]="formControl"
+              type="text"
+              id="note"
+              class="dark:text-white border text-sm rounded-base block w-full px-3 py-2.5 shadow-xs placeholder:text-gray-400"
+              placeholder="New note"
+              required
+            />
+            @if (formControl.invalid && formControl.touched) {
+              <span class="text-red-500 text-xs mt-1 block">
+                @if (formControl.errors?.["required"]) {
+                  Note is required.
+                }
+              </span>
+            }
+          </div>
+
+          <button
+            (click)="addNote()"
+            class="bg-gray-50 border rounded hover:bg-gray-300 shadow-xs font-medium rounded-base text-sm px-4 py-2 focus:outline-none dark:bg-gray-700 dark:text-white dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white"
+          >
+            Add Note
+          </button>
+        </div>
+        <ul role="list" class="divide-y mt-4">
+          @for (note of notes; track note.id) {
+            <item-list-client
+              [note]="note"
+              (delete)="deleteNote($event)"
+            ></item-list-client>
+          }
+        </ul>
+      </div>
+    </div>
+  </div>
+}
+@if (noteResource.error()) {
+  <div class="flex flex-col justify-center items-center w-full mt-6">
+    <h1 class="text-xl font-semibold text-center text-red-500">
+      Error loading client notes
+    </h1>
+    <p class="text-center text-gray-500 mt-2">Please try again later.</p>
+  </div>
+}
