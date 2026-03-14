@@ -28,6 +28,11 @@ export class CreationDateClientPipe implements PipeTransform {
   }
   private pluralize(label: string): string {
     if (label === 'mes') return 'meses';
-    return label + 's';
+    if (label === 'año') return 'años';
+    if (label === 'semana') return 'semanas';
+    if (label === 'día') return 'días';
+    if (label === 'hora') return 'horas';
+    if (label === 'minuto') return 'minutos';
+    return label;
   }
 }

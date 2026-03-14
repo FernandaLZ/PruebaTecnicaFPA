@@ -12,48 +12,36 @@ ng serve
 
 Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
 
-## Code scaffolding
+## ¿Porqué elegí esta estructua?
+ -clients
+  -components
+  -interfaces
+  -mapper
+  -pages
+  -pipes
+  -services
+-shared
+  -components
+  -interfaces
+  -routes
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+Elegí organizar los archivos así para que todo lo relacionado con clientes esté junto en un solo lugar, lo que hace que sea más fácil entender y trabajar con ellos. Por ejemplo, los componentes, servicios y datos están todos agrupados, y lo que se comparte con otros módulos se pone en otra carpeta.
 
-```bash
-ng generate component component-name
-```
+De esta manera, el módulo de clientes funciona de forma independiente, y si más adelante agregamos otros módulos, podemos seguir la misma forma de organizar todo, manteniendo la aplicación ordenada y fácil de mantener.
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## ¿Porqué elegí este patron?
 
-```bash
-ng generate --help
-```
+Elegí un patrón donde toda la lógica de los clientes se maneja en un solo lugar y los componentes solo se ocupan de mostrar los datos y reaccionar a los cambios del usuario. Esto permite mantener el código más organizado, predecible y fácil de actualizar.
 
-## Building
+## ¿Porqué elegí estas librerias?
 
-To build the project run:
+-Tailwind
+Elegí Tailwind porque me permite hacer los estilos de manera mucho más rápida y consistente. Además, hay recursos como Flowbite que dan ejemplos listos con esta librería, lo que facilita implementar componentes visuales solo cambiando los datos que necesito.
 
-```bash
-ng build
-```
+-Angular Material
+Usé Angular Material principalmente para los diálogos, porque me permite crear modales funcionales y accesibles de manera sencilla, sin tener que construir toda la lógica y el estilo desde cero. Esto hace que el desarrollo sea más rápido y la experiencia del usuario más consistente.
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+## ¿IA?
+Me orienté para guiarme en la mejor implementación del dark mode, ajustando los colores para que combinen con la tabla de Flowbite. También trabajé en la lógica de la pipe de tiempo, donde ajusté la función pluralize para mostrar los labels correctamente y corregí un error relacionado con el manejo de fechas (Date).
 
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Además, utilicé copilot para el autocompletado para agilizar el desarrollo y asegurar que todas las dependencias estuvieran correctamente importadas.

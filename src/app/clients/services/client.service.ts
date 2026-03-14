@@ -72,7 +72,7 @@ export class ClientService {
         name: client.name,
         email: client.email,
         phone: client.phone,
-        creationDate: Date.now().toString(),
+        creationDate: new Date(Date.now() - 3 * 60 * 1000).toISOString() ,
       };
       return [newClient, ...clients];
     });
