@@ -1,0 +1,81 @@
+<mat-dialog-content class="bg-gray-50 dark:bg-gray-900">
+  <form class="max-w-sm mx-auto" [formGroup]="formGroup">
+    <div class="mb-5">
+      <label for="email" class="dark:text-white text-sm font-medium"
+        >Name</label
+      >
+      <input
+        formControlName="name"
+        type="text"
+        id="name"
+        class="dark:text-white border text-sm rounded-base block w-full px-3 py-2.5 shadow-xs placeholder:text-gray-400"
+        placeholder="Your name"
+        required
+      />
+      @if (formGroup.controls.name.invalid && formGroup.controls.name.touched) {
+        <span class="text-red-500 text-xs mt-1 block">
+          @if (formGroup.controls.name.errors?.["required"]) {
+            Name is required.
+          }
+          @if (formGroup.controls.name.errors?.["minlength"]) {
+            Name must be at least 3 characters.
+          }
+        </span>
+      }
+    </div>
+    <div class="mb-5">
+      <label for="email" class="dark:text-white text-sm font-medium"
+        >Email</label
+      >
+      <input
+        formControlName="email"
+        type="email"
+        id="email"
+        class="dark:text-white border text-sm rounded-base block w-full px-3 py-2.5 shadow-xs placeholder:text-gray-400"
+        placeholder="Your email"
+        required
+      />
+      @if (
+        formGroup.controls.email.invalid && formGroup.controls.email.touched
+      ) {
+        <span class="text-red-500 text-xs mt-1 block">
+          @if (formGroup.controls.email.errors?.["required"]) {
+            Email is required.
+          }
+          @if (formGroup.controls.email.errors?.["email"]) {
+            Please enter a valid email address.
+          }
+        </span>
+      }
+    </div>
+    <div class="mb-5">
+      <label for="phone" class="dark:text-white text-sm font-medium"
+        >Phone</label
+      >
+      <input
+        formControlName="phone"
+        type="tel"
+        id="phone"
+        class="dark:text-white border text-sm rounded-base block w-full px-3 py-2.5 shadow-xs placeholder:text-gray-400"
+        placeholder="Your phone"
+      />
+    </div>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions class="bg-gray-50 dark:bg-gray-900">
+  <div class="flex gap-2">
+    <button
+      class="bg-brand box-border border border-transparent hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none"
+      (click)="onNoClick()"
+    >
+      Cancel
+    </button>
+    <button
+      class="bg-brand box-border border border-transparent hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none"
+      (click)="saveClient()"
+    >
+      Save
+    </button>
+  </div>
+</mat-dialog-actions>
