@@ -16,6 +16,7 @@ export class ItemListClientComponent {
   faTrash = faTrash;
 
   deleteNote(noteId:number) {
+    console.log('Deleting note with ID:', noteId);
     this.delete.emit(noteId);
 
   }
